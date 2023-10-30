@@ -1,6 +1,6 @@
 "use client";
 import Banner from "@/components/banner";
-import { Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -17,11 +17,13 @@ export default function Home() {
     <>
       <Banner />
       <div className="max-w-6xl mt-12 mx-auto px-4">
-        <h2 className="font-bold text-3xl mb-4">Todays For You</h2>
+        <h2 className="font-bold text-3xl mb-4">Todays For You!</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {products.map((i) => (
             <Link href={`/product/${i.id}`} key={i.id} className="border rounded-lg p-4 hover:border-zinc-950 hover:shadow-2xl">
-              <div className="w-full aspect-[3/2] bg-white mb-4">
+              <div className="w-full aspect-[3/2] bg-white mb-4 relative">
+              <div className="bg-gray-400 rounded-full p-4 absolute right-0"></div>
+              <Heart className="absolute top-1 right-1" />
                 <img
                   src={i.image}
                   alt={i.title}
