@@ -20,7 +20,7 @@ export default function Home() {
       <div className="max-w-6xl mt-12 mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center mb-4 justify-between gap-4">
           <h2 className="font-bold text-3xl">Todays For You!</h2>
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
               Fashion
             </button>
