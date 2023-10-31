@@ -1,5 +1,6 @@
 "use client";
 import Banner from "@/components/banner";
+import Love from "@/components/love";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,21 +18,22 @@ export default function Home() {
     <>
       <Banner />
       <div className="max-w-6xl mt-12 mx-auto px-4">
-        <div className="flex items-center mb-4 justify-between">
+        <div className="flex flex-col md:flex-row items-center mb-4 justify-between gap-4">
           <h2 className="font-bold text-3xl">Todays For You!</h2>
-
-          <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
-            Fashion
-          </button>
-          <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
-            Parfume
-          </button>
-          <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
-            Electronic
-          </button>
-          <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
-            Digital
-          </button>
+          <div className="flex gap-2">
+            <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
+              Fashion
+            </button>
+            <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
+              Parfume
+            </button>
+            <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
+              Electronic
+            </button>
+            <button className="border rounded py-1 px-3 hover:shadow-2xl hover:border-gray-600 hover:bg-gray-400">
+              Digital
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {products.map((i) => (
@@ -41,8 +43,7 @@ export default function Home() {
               className="border rounded-lg p-4 hover:border-zinc-950 hover:shadow-2xl"
             >
               <div className="w-full aspect-[3/2] bg-white mb-4 relative">
-                <div className="bg-gray-300 rounded-full p-4 absolute right-0"></div>
-                <Heart className="absolute top-1 right-1" />
+                <Love />
                 <img
                   src={i.image}
                   alt={i.title}
