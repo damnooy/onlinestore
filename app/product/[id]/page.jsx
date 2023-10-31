@@ -3,16 +3,22 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
+import { useCart } from "react-use-cart";
 
 export default function Page() {
   const params = useParams();
   const [product, setProduct] = useState();
+  const { addItem } = useCart();
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
       .then((res) => res.json())
       .then((json) => setProduct(json));
   }, []);
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <div className="max-w-6xl mt-12 mx-auto px-4">
@@ -30,9 +36,12 @@ export default function Page() {
           <h4 className="font-bold text-3xl text-amber-500">
             ${product?.price}
           </h4>
-            <button className="border bg-amber-500 hover:bg-amber-300 transition-all rounded px-4 py-1 mt-4 ">
-                <p className="font-bold text-white">+ Keranjang</p>
-            </button>
+          <button
+            onClick={() => addItem(product)}
+            className="border bg-amber-500 hover:bg-amber-300 transition-all rounded px-4 py-1 mt-4 "
+          >
+            <p className="font-bold text-white">+ Keranjang</p>
+          </button>
         </div>
       </div>
     </div>
