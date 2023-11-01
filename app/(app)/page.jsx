@@ -1,6 +1,7 @@
 "use client";
 import Banner from "@/components/banner";
 import Love from "@/components/love";
+import Navbar from "@/components/navbar";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

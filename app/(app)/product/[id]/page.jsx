@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useCart } from "react-use-cart";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const params = useParams();
@@ -37,8 +38,11 @@ export default function Page() {
             ${product?.price}
           </h4>
           <button
-            onClick={() => addItem(product)}
-            className="border bg-amber-500 hover:bg-amber-300 transition-all rounded px-4 py-1 mt-4 "
+            onClick={() => {
+              addItem(product);
+              toast.success("Berhasil Menambahkan Ke Keranjang");
+            }}
+            className="border bg-amber-500 hover:bg-amber-400 active:bg-amber-300 transition-all rounded px-4 py-1 mt-4 "
           >
             <p className="font-bold text-white">+ Keranjang</p>
           </button>

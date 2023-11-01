@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import toast from "react-hot-toast";
 
 export default function Love() {
   const [loved, setLoved] = useState(false);
@@ -14,6 +15,11 @@ export default function Love() {
       onClick={(e) => {
         e.preventDefault();
         setLoved(!loved);
+        if (loved) {
+          toast.success("Menghapus dari Favorit");
+        } else {
+          toast.success("Menambahkan Ke Favorit");
+        }
       }}
     >
       {loved ? (

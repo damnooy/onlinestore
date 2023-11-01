@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@splidejs/react-splide": "^0.7.12",
     "lucide-react": "^0.290.0",
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "react-use-cart": "^1.13.0"
   },
   "devDependencies": {

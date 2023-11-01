@@ -1,8 +1,22 @@
+"use client";
 import { Bell, Search, ShoppingCart } from "lucide-react";
 import Logo from "./logo";
 import Link from "next/link";
+import { useCart } from "react-use-cart";
+import { Popover } from "@headlessui/react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const { totalItems, items } = useCart();
+  const [isRender, setIsRender] = useState(false);
+
+  useEffect(() => {
+    setIsRender(true);
+  }, []);
+
+  if (!isRender) {
+    return null;
+  }
   return (
     <nav className="bg-white w-full h-16 border-b flex items-center">
       <div className="w-full max-w-5xl mx-auto px-4 flex gap-6 items-center">
@@ -20,8 +34,39 @@ export default function Navbar() {
           />
         </div>
         <div className="shrink-0 flex gap-4">
-          <ShoppingCart className="w-5 h-5" />
-          <Bell className="w-5 h-5" />
+          <Popover className="relative">
+            <Popover.Button className="relative p-1.5">
+              <ShoppingCart className="w-5 h-5" />
+              <div className="absolute top-0 right-0 bg-red-500 text-[9px] w-4 h-4 rounded-full font-bold text-white flex items-center justify-center">
+                {totalItems > 99 ? "99+" : totalItems}
+              </div>
+            </Popover.Button>
+            <Popover.Panel className="absolute z-10 right-0 w-80 bg-white shadow-xl p-3 rounded-md">
+              <h4 className="font-bold text-sm mb-2 ">My Cart</h4>
+              {items.map((i) => (
+                <div key={i.id} className="flex gap-2">
+                  <img
+                    src={i.image}
+                    alt=""
+                    className="shrink-0 w-8 h-8 object-cover rounded"
+                  />
+                  <div className="flex-1">
+                    <p className="text-sm line-clamp-1 font-bold">{i.title}</p>
+                    <p className="text-sm text-gray-400">{i.quantity} barang</p>
+                  </div>
+                  <h6 className="shrink-0 font-bold text-amber-500">
+                    ${i.price}
+                  </h6>
+                </div>
+              ))}
+              <button className="w-full bg-amber-500 text-white p-1.5 text-sm mt-2 rounded active:bg-amber-300 hover:bg-amber-400">
+                Checkout Sekarang
+              </button>
+            </Popover.Panel>
+          </Popover>
+          <button className="relative p-1.5">
+            <Bell className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </nav>
