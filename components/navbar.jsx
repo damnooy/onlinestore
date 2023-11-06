@@ -42,23 +42,39 @@ export default function Navbar() {
               </div>
             </Popover.Button>
             <Popover.Panel className="absolute z-10 right-0 w-80 bg-white shadow-xl p-3 rounded-md">
-              <h4 className="font-bold text-sm mb-2 ">My Cart</h4>
-              {items.map((i) => (
-                <div key={i.id} className="flex gap-2">
-                  <img
-                    src={i.image}
-                    alt=""
-                    className="shrink-0 w-8 h-8 object-cover rounded"
-                  />
-                  <div className="flex-1">
-                    <p className="text-sm line-clamp-1 font-bold">{i.title}</p>
-                    <p className="text-sm text-gray-400">{i.quantity} barang</p>
+              <h4 className="font-bold text-sm mb-2 ">
+                Keranjang Kuning ({totalItems})
+              </h4>
+              <div className="space-y-2">
+                {items.map((i) => (
+                  <div key={i.id} className="flex gap-2">
+                    <img
+                      src={i.image}
+                      alt=""
+                      className="shrink-0 w-8 h-8 object-cover rounded"
+                    />
+                    <div className="flex-1">
+                      <p className="text-sm line-clamp-1 font-bold">
+                        {i.title}
+                      </p>
+                      <div className="flex">
+                        <p className="text-sm text-gray-400">
+                          <button className="h-5 w-5 active:scale-95 bg-red-500 border items-start my-1 rounded-md font-bold text-white">
+                            <p> - </p>
+                          </button>
+                          {i.quantity} barang{" "}
+                          <button className="h-5 w-5 active:scale-95 bg-green-500 border items-end my-1 rounded-md font-bold text-white">
+                            <p> + </p>
+                          </button>
+                        </p>
+                      </div>
+                    </div>
+                    <h6 className="shrink-0 font-bold text-amber-500">
+                      ${i.price}
+                    </h6>
                   </div>
-                  <h6 className="shrink-0 font-bold text-amber-500">
-                    ${i.price}
-                  </h6>
-                </div>
-              ))}
+                ))}
+              </div>
               <button className="w-full bg-amber-500 text-white p-1.5 text-sm mt-2 rounded active:bg-amber-300 hover:bg-amber-400">
                 Checkout Sekarang
               </button>

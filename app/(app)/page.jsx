@@ -41,7 +41,7 @@ export default function Home() {
             <Link
               href={`/product/${i.id}`}
               key={i.id}
-              className="border rounded-lg p-4 hover:border-zinc-950 hover:shadow-2xl"
+              className="border rounded-lg p-4 hover:border-zinc-950 hover:transition-all hover:shadow-2xl"
             >
               <div className="w-full aspect-[3/2] bg-white mb-4 relative">
                 <Love />
